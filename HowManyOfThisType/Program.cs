@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HowManyOfThisType
 {
-    class Program
+    public static class Checker
     {
-        static void Main(string[] args)
+        public static int HowManyOfType<T>(IEnumerable<object> items)
         {
-            Console.WriteLine("Hello, World!");
+            return items.OfType<T>().Count();
         }
     }
 }
