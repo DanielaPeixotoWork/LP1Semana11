@@ -1,12 +1,88 @@
 ﻿using System;
 
-namespace MyEnumerable
+namespace MyGenericClass
 {
-    class Program
+
+    public class Guarda3<T>
     {
-        static void Main(string[] args)
+        private T _item1;
+        private T _item2;
+        private T _item3;
+
+        public Guarda3()
         {
-            Console.WriteLine("Hello, World!");
+            _item1 = default(T);
+            _item2 = default(T);
+            _item3 = default(T);
+        }
+
+        public T GetItem(int i)
+        {
+
+            if (i < 0 || i > 2)
+                throw new IndexOutOfRangeException("Index must be 0, 1, or 2.");
+
+            return i switch
+            {
+                0 => _item1,
+                1 => _item2,
+                2 => _item3,
+                _ => throw new IndexOutOfRangeException("Index must be 0, 1, or 2."),
+            };
+        }
+
+        public void SetItem(int i, T item)
+        {
+            if (i < 0 || i > 2)
+                throw new IndexOutOfRangeException("Index must be 0, 1, or 2.");
+
+            switch (i)
+            {
+                case 0:
+                    _item1 = item;
+                    break;
+                case 1:
+                    _item2 = item;
+                    break;
+                case 2:
+                    _item3 = item;
+                    break;
+            }
+        }
+
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                var stringGuarda = new Guarda3<string>();
+                stringGuarda.SetItem(0, "first");
+                stringGuarda.SetItem(1, "second");
+                stringGuarda.SetItem(2, "third");
+
+                Console.WriteLine("Guarda3<string> items:");
+                Console.WriteLine(stringGuarda.GetItem(0));
+                Console.WriteLine(stringGuarda.GetItem(1)); 
+                Console.WriteLine(stringGuarda.GetItem(2)); 
+
+                var floatGuarda = new Guarda3<float>();
+                floatGuarda.SetItem(0, 1.1f);
+                floatGuarda.SetItem(1, 2.2f);
+                floatGuarda.SetItem(2, 3.3f);
+
+                Console.WriteLine("\nGuarda3<float> items:");
+                Console.WriteLine(floatGuarda.GetItem(0)); 
+                Console.WriteLine(floatGuarda.GetItem(1)); 
+                Console.WriteLine(floatGuarda.GetItem(2)); 
+
+                try
+                {
+                    Console.WriteLine(floatGuarda.GetItem(3));
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine($"\nException caught: {ex.Message}");
+                }
+            }
         }
     }
 }
