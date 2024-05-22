@@ -50,6 +50,19 @@ namespace MyGenericClass
             }
         }
 
+              public IEnumerator<T> GetEnumerator()
+        {
+            yield return _item1;
+            yield return _item2;
+            yield return _item3;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
         class Program
         {
             static void Main(string[] args)
