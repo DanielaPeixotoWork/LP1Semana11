@@ -50,37 +50,38 @@ namespace MyGenericClass
             }
         }
 
-    class Program
-    {
-        static void Main(string[] args)
+        class Program
         {
-            var stringGuarda = new Guarda3<string>();
-            stringGuarda.SetItem(0, "first");
-            stringGuarda.SetItem(1, "second");
-            stringGuarda.SetItem(2, "third");
-
-            Console.WriteLine("Guarda3<string> items:");
-            Console.WriteLine(stringGuarda.GetItem(0));
-            Console.WriteLine(stringGuarda.GetItem(1)); 
-            Console.WriteLine(stringGuarda.GetItem(2)); 
-
-            var floatGuarda = new Guarda3<float>();
-            floatGuarda.SetItem(0, 1.1f);
-            floatGuarda.SetItem(1, 2.2f);
-            floatGuarda.SetItem(2, 3.3f);
-
-            Console.WriteLine("\nGuarda3<float> items:");
-            Console.WriteLine(floatGuarda.GetItem(0)); 
-            Console.WriteLine(floatGuarda.GetItem(1)); 
-            Console.WriteLine(floatGuarda.GetItem(2)); 
-
-            try
+            static void Main(string[] args)
             {
-                Console.WriteLine(floatGuarda.GetItem(3));
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Console.WriteLine($"\nException caught: {ex.Message}");
+                var stringGuarda = new Guarda3<string>();
+                stringGuarda.SetItem(0, "first");
+                stringGuarda.SetItem(1, "second");
+                stringGuarda.SetItem(2, "third");
+
+                Console.WriteLine("Guarda3<string> items:");
+                Console.WriteLine(stringGuarda.GetItem(0));
+                Console.WriteLine(stringGuarda.GetItem(1)); 
+                Console.WriteLine(stringGuarda.GetItem(2)); 
+
+                var floatGuarda = new Guarda3<float>();
+                floatGuarda.SetItem(0, 1.1f);
+                floatGuarda.SetItem(1, 2.2f);
+                floatGuarda.SetItem(2, 3.3f);
+
+                Console.WriteLine("\nGuarda3<float> items:");
+                Console.WriteLine(floatGuarda.GetItem(0)); 
+                Console.WriteLine(floatGuarda.GetItem(1)); 
+                Console.WriteLine(floatGuarda.GetItem(2)); 
+
+                try
+                {
+                    Console.WriteLine(floatGuarda.GetItem(3));
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine($"\nException caught: {ex.Message}");
+                }
             }
         }
     }
