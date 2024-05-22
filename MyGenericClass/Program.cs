@@ -30,5 +30,24 @@ namespace MyGenericClass
                 _ => throw new IndexOutOfRangeException("Index must be 0, 1, or 2."),
             };
         }
+
+        public void SetItem(int i, T item)
+        {
+            if (i < 0 || i > 2)
+                throw new IndexOutOfRangeException("Index must be 0, 1, or 2.");
+
+            switch (i)
+            {
+                case 0:
+                    _item1 = item;
+                    break;
+                case 1:
+                    _item2 = item;
+                    break;
+                case 2:
+                    _item3 = item;
+                    break;
+            }
+        }
     }
 }
