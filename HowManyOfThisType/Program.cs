@@ -30,6 +30,8 @@ namespace HowManyOfThisType
             Console.WriteLine($"Number of string items: {stringCount}");
             Console.WriteLine($"Number of double items: {doubleCount}");
             Console.WriteLine($"Number of DateTime items: {dateTimeCount}");
+
+            Console.WriteLine("Merci d’utiliser ce programme!");
         }
     }
 }
