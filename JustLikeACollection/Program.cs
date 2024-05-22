@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace MyGenericClass
+namespace JustLikeACollection
 {
 
-    public class Guarda3<T>
+    public class Guarda3<T> : IEnumerable<T>
     {
         private T _item1;
         private T _item2;
@@ -47,6 +47,26 @@ namespace MyGenericClass
                 case 2:
                     _item3 = item;
                     break;
+            }
+        }
+
+        public void Add(T item)
+        {
+            if (EqualityComparer<T>.Default.Equals(_item1, default(T)))
+            {
+                _item1 = item;
+            }
+            else if (EqualityComparer<T>.Default.Equals(_item2, default(T)))
+            {
+                _item2 = item;
+            }
+            else if (EqualityComparer<T>.Default.Equals(_item3, default(T)))
+            {
+                _item3 = item;
+            }
+            else
+            {
+                throw new InvalidOperationException("No space to add new item.");
             }
         }
 

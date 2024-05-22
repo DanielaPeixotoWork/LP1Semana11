@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyGenericClass
+namespace MyEnumerable
 {
 
     public class Guarda3<T>
